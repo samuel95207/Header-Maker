@@ -1,0 +1,28 @@
+body{
+    background-color: gray;
+}
+
+h1{
+    text-align: center;
+    background-color: burlywood;
+}
+
+.display-area{
+    background-color: aqua;
+    width: 400px;
+    height: 500px;
+    margin: 20px;
+}
+
+.control-area{
+    /* background-color: red; */
+    width: 400px;
+    height: 500px;
+    margin: 20px;
+}
+
+.control-area>form{
+    background-color: white;
+    padding: 20px;
+    height: 100%;
+}
