@@ -17,16 +17,17 @@
 <body>
     <h1>Header Maker</h1>
     <div class="d-flex justify-content-center flex-wrap">
-        <div class="display-area">
-            <div class="card"><img src="./assets/frame.png" class="card-img-top" alt="..."></div>
+        <div class="display-area border">
+            <canvas id='edit-area'></canvas>
         </div>
 
         <div class="control-area">
             <form class="border">
                 <div class="mb-3">
                     <label for="formFile" class="form-label">選擇照片檔案</label>
-                    <input class="form-control" type="file" id="formFile" >
+                    <input class="form-control form-control-lg" type="file" id="formFile" accept="image/*">
                 </div>
+                <button type="button" class="btn btn-success" id="download-button">Download</button>
             </form>
         </div>
     </div>
@@ -40,6 +41,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.1/fabric.min.js></script>
     <script src="./app.js"></script>
 
 </body>
