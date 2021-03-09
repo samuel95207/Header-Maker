@@ -4,6 +4,8 @@ var canvas = new fabric.Canvas('edit-area', { width: 400, height: 500 });
 
 //config
 defaultTextPos = {top: 300, left: canvas.width/2}
+defaultImagePos = {top: 0, left: 0}
+
 
 
 // Add frame
@@ -39,10 +41,13 @@ function readImage(file) {
     reader.addEventListener('load', (event) => {
         let src = event.target.result;
         fabric.Image.fromURL(src, function (img) {
-            console.log(img)
-            img.scale(0.1)
-            canvas.add(img)
-            // canvas.sendToBack(img);
+            let scale = canvas.width/img.width;
+            img.scale(scale);
+
+            img.set('left',defaultImagePos.left)
+            img.set('top',defaultImagePos.top)
+
+            canvas.add(img);
         });
     });
     reader.readAsDataURL(file);
