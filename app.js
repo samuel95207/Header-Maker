@@ -79,7 +79,7 @@ downloadButton.addEventListener('click', (event) => {
         format: 'png',
     });
     const link = document.createElement('a');
-    link.download = 'image.png';
+    link.download = 'header.png';
     link.href = dataURL;
     document.body.appendChild(link);
     link.click();
