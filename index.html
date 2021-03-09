@@ -23,11 +23,25 @@
 
         <div class="control-area">
             <form class="border">
-                <div class="mb-3">
-                    <label for="formFile" class="form-label">選擇照片檔案</label>
-                    <input class="form-control form-control-lg" type="file" id="formFile" accept="image/*">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="file-label">選擇照片檔案</span>
+                    </div>
+                    <input class="form-control form-control-lg" type="file" id="formFile" accept="image/*"
+                        aria-describedby="file-label">
                 </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="text-label">職位名稱</span>
+                    </div>
+                    <input type="text" class="form-control" id="text-input" placeholder="職位名稱" aria-label="職位名稱"
+                        aria-describedby="text-label">
+                </div>
+
                 <button type="button" class="btn btn-success" id="download-button">Download</button>
+
             </form>
         </div>
     </div>

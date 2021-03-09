@@ -1,6 +1,11 @@
 // fabric.js process
 var canvas = new fabric.Canvas('edit-area', { width: 400, height: 500 });
 
+
+//config
+defaultTextPos = {top: 300, left: canvas.width/2}
+
+
 // Add frame
 fabric.Image.fromURL('./assets/frame.png', function (img) {
     img.opacity = 0.4
@@ -10,11 +15,9 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
     canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
         scaleX: canvas.width / img.width,
         scaleY: canvas.height / img.height
-     });
+    });
     canvas.setOverlayImage(img);
 });
-var rect = new fabric.Rect();
-canvas.add(rect);
 
 
 // File process
@@ -47,6 +50,19 @@ function readImage(file) {
 }
 
 
+// Add text
+var textbox = new fabric.Text('',{...defaultTextPos});
+canvas.add(textbox);
+var textInput = document.getElementById('text-input');
+console.log(textInput)
+textInput.addEventListener('input', (event) => {
+    textbox.set('text',textInput.value);
+    textbox.set('left',(canvas.width-textbox.width)/2);
+    canvas.renderAll();
+})
+
+
+
 // Download event
 var downloadButton = document.getElementById("download-button")
 downloadButton.addEventListener('click', (event) => {
@@ -56,11 +72,11 @@ downloadButton.addEventListener('click', (event) => {
         left: 0,
         top: 0,
         format: 'png',
-   });
-   const link = document.createElement('a');
-   link.download = 'image.png';
-   link.href = dataURL;
-   document.body.appendChild(link);
-   link.click();
-   document.body.removeChild(link);
+    });
+    const link = document.createElement('a');
+    link.download = 'image.png';
+    link.href = dataURL;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 })
