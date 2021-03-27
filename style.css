@@ -1,14 +1,17 @@
 body{
-    background-color: gray;
+    background-color: #7f6264;
 }
 
 h1{
     text-align: center;
-    background-color: burlywood;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #d5b783;
+    background-color: #44332c;
 }
 
 .display-area{
-    /* background-color: aqua; */
+    background-color: white;
     width: 400px;
     height: 500px;
     margin: 20px;
