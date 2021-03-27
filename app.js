@@ -17,6 +17,8 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
         scaleX: canvas.width / img.width,
         scaleY: canvas.height / img.height
     });
+    img.opacity = 0.8;
+    canvas.setOverlayImage(img);
 });
 
 
@@ -60,10 +62,15 @@ function readImage(file) {
             img.set('left', defaultImagePos.left)
             img.set('top', defaultImagePos.top)
 
-            img.opacity = 0.7;
-
             canvas.add(img);
             canvas.bringToFront(textbox);
+            canvas.item(0).set({
+                borderColor: 'blue',
+                cornerColor: 'blue',
+                cornerSize: 20,
+                transparentCorners: false
+              });
+              canvas.setActiveObject(canvas.item(0));
 
         });
     });
