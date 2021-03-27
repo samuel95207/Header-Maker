@@ -3,14 +3,13 @@ var canvas = new fabric.Canvas('edit-area', { width: 400, height: 500 });
 
 
 //config
-defaultTextPos = {top: 300, left: canvas.width/2}
-defaultImagePos = {top: 0, left: 0}
+defaultTextPos = { top: 367, left: canvas.width / 2 }
+defaultImagePos = { top: 0, left: 0 }
 
 
 
 // Add frame
 fabric.Image.fromURL('./assets/frame.png', function (img) {
-    img.opacity = 0.4
     img.scaleX = canvas.width / img.width,
         img.scaleY = canvas.height / img.height
     img.selectable = false;
@@ -18,8 +17,22 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
         scaleX: canvas.width / img.width,
         scaleY: canvas.height / img.height
     });
-    canvas.setOverlayImage(img);
 });
+
+
+
+// Add text
+var textbox = new fabric.Text('', { ...defaultTextPos });
+canvas.add(textbox);
+canvas.bringToFront(textbox);
+var textInput = document.getElementById('text-input');
+console.log(textInput)
+textInput.addEventListener('input', (event) => {
+    textbox.set('text', textInput.value);
+    textbox.set('left', (canvas.width - textbox.width) / 2);
+    canvas.renderAll();
+})
+
 
 
 // File process
@@ -41,30 +54,23 @@ function readImage(file) {
     reader.addEventListener('load', (event) => {
         let src = event.target.result;
         fabric.Image.fromURL(src, function (img) {
-            let scale = canvas.width/img.width;
+            let scale = canvas.width / img.width;
             img.scale(scale);
 
-            img.set('left',defaultImagePos.left)
-            img.set('top',defaultImagePos.top)
+            img.set('left', defaultImagePos.left)
+            img.set('top', defaultImagePos.top)
+
+            img.opacity = 0.7;
 
             canvas.add(img);
+            canvas.bringToFront(textbox);
+
         });
     });
     reader.readAsDataURL(file);
     console.log(file)
 }
 
-
-// Add text
-var textbox = new fabric.Text('',{...defaultTextPos});
-canvas.add(textbox);
-var textInput = document.getElementById('text-input');
-console.log(textInput)
-textInput.addEventListener('input', (event) => {
-    textbox.set('text',textInput.value);
-    textbox.set('left',(canvas.width-textbox.width)/2);
-    canvas.renderAll();
-})
 
 
 
