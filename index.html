@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
     <title>Header Maker</title>
 </head>
 
@@ -38,7 +39,7 @@
                         <span class="input-group-text" id="text-label">職位名稱</span>
                     </div>
                     <input type="text" class="form-control" id="text-input" placeholder="職位名稱" aria-label="職位名稱"
-                        aria-describedby="text-label">
+                        aria-describedby="text-label" onkeypress="if (event.keyCode == 13) {return false;}">
                 </div>
 
                 <button type="button" class="btn btn-success btn-lg btn-block" id="download-button">
