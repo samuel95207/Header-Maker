@@ -19,8 +19,10 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
     img.scaleX = canvas.width / img.width;
     img.scaleY = canvas.height / img.height;
     img.selectable = false;
-    img.moveTo(5);
     canvas.add(img);
+
+    img.moveTo(2);
+
 });
 
 
@@ -28,14 +30,15 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
 // Add text
 var textbox = new fabric.Text('', { ...defaultTextPos , fontFamily:"Hanyi"});
 canvas.add(textbox);
-canvas.bringToFront(textbox);
 var textInput = document.getElementById('text-input');
 
 textInput.addEventListener('input', (event) => {
     textbox.set('text', textInput.value);
     textbox.set('left', (canvas.width - textbox.width) / 2);
     textbox.set(selectionBoxStyle);
-    textbox.moveTo(10);
+
+    textbox.moveTo(3);
+
     canvas.renderAll();
 })
 
@@ -62,13 +65,23 @@ function readImage(file) {
         fabric.Image.fromURL(src, function (img) {
             let scale = canvas.width / img.width;
             img.scale(scale);
-
             img.set('left', defaultImagePos.left)
             img.set('top', defaultImagePos.top)
+            img.set(selectionBoxStyle);
+
+
+            img.on('selected', function() {
+                img.opacity = 0.75;
+            });
+            canvas.on('selection:cleared', function() {
+                img.opacity = 1;
+            });
+
 
             canvas.add(img);
-            img.set(selectionBoxStyle);
+
             img.moveTo(1);
+
 
         });
     });
