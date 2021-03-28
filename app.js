@@ -82,6 +82,7 @@ function readImage(file) {
 
             img.moveTo(1);
 
+            canvas.setActiveObject(img);
 
         });
     });
