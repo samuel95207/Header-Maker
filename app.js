@@ -1,5 +1,5 @@
 // fabric.js process
-var canvas = new fabric.Canvas('edit-area', { width: 400, height: 500 });
+var canvas = new fabric.Canvas('edit-area', { width: 500, height: 500 });
 
 
 //config
@@ -10,8 +10,8 @@ defaultImagePos = { top: 0, left: 0 }
 
 // Add frame
 fabric.Image.fromURL('./assets/frame.png', function (img) {
-    img.scaleX = canvas.width / img.width,
-        img.scaleY = canvas.height / img.height
+    img.scaleX = canvas.width / img.width;
+    img.scaleY = canvas.height / img.height;
     img.selectable = false;
     canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
         scaleX: canvas.width / img.width,
@@ -69,8 +69,8 @@ function readImage(file) {
                 cornerColor: 'blue',
                 cornerSize: 20,
                 transparentCorners: false
-              });
-              canvas.setActiveObject(canvas.item(0));
+            });
+            canvas.setActiveObject(canvas.item(0));
 
         });
     });
