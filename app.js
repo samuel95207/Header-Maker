@@ -5,6 +5,12 @@ var canvas = new fabric.Canvas('edit-area', { width: 500, height: 500 });
 //config
 defaultTextPos = { top: 367, left: canvas.width / 2 }
 defaultImagePos = { top: 0, left: 0 }
+selectionBoxStyle = {
+    borderColor: 'blue',
+    cornerColor: 'blue',
+    cornerSize: 20,
+    transparentCorners: false
+}
 
 
 
@@ -13,25 +19,23 @@ fabric.Image.fromURL('./assets/frame.png', function (img) {
     img.scaleX = canvas.width / img.width;
     img.scaleY = canvas.height / img.height;
     img.selectable = false;
-    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-        scaleX: canvas.width / img.width,
-        scaleY: canvas.height / img.height
-    });
-    img.opacity = 0.8;
-    canvas.setOverlayImage(img);
+    img.moveTo(5);
+    canvas.add(img);
 });
 
 
 
 // Add text
-var textbox = new fabric.Text('', { ...defaultTextPos });
+var textbox = new fabric.Text('', { ...defaultTextPos , fontFamily:"Hanyi"});
 canvas.add(textbox);
 canvas.bringToFront(textbox);
 var textInput = document.getElementById('text-input');
-console.log(textInput)
+
 textInput.addEventListener('input', (event) => {
     textbox.set('text', textInput.value);
     textbox.set('left', (canvas.width - textbox.width) / 2);
+    textbox.set(selectionBoxStyle);
+    textbox.moveTo(10);
     canvas.renderAll();
 })
 
@@ -42,7 +46,7 @@ var fileElement = document.getElementById("formFile")
 fileElement.addEventListener('change', (event) => {
     const fileList = event.target.files;
     console.log(fileList);
-    readImage(fileList[0])
+    readImage(fileList[0]);
 })
 
 function readImage(file) {
@@ -63,14 +67,8 @@ function readImage(file) {
             img.set('top', defaultImagePos.top)
 
             canvas.add(img);
-            canvas.bringToFront(textbox);
-            canvas.item(0).set({
-                borderColor: 'blue',
-                cornerColor: 'blue',
-                cornerSize: 20,
-                transparentCorners: false
-            });
-            canvas.setActiveObject(canvas.item(0));
+            img.set(selectionBoxStyle);
+            img.moveTo(1);
 
         });
     });
