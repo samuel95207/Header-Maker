@@ -1,3 +1,8 @@
+@font-face {
+    font-family: Hanyi;
+    src: url(./assets/Hanyi\ Senty\ Triumph\ Calligraphy-0813-UI.ttf);
+  }
+
 body{
     background-color: #7f6264;
 }
@@ -15,6 +20,7 @@ h1{
     width: 500px;
     height: 500px;
     margin: 20px;
+    font-family: Hanyi, serif;
 }
 
 .control-area{
